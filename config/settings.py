@@ -12,32 +12,33 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import datetime
 import os
-import environ
 import django_heroku
 
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
 
-env = environ.Env(
-    DEBUG=(int, 0)
-)
-# reading .env file
-environ.Env.read_env('.env')
+# env = environ.Env(
+#     DEBUG=(int, 0)
+# )
+# # reading .env file
+# environ.Env.read_env('.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=get_random_secret_key())
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', default=True)
+DEBUG = os.environ.get('DEBUG', default=True)
 
 BASE_BACKEND_URL = os.environ.get('DJANGO_BASE_BACKEND_URL', default='http://localhost:8000')
 BASE_FRONTEND_URL = os.environ.get('DJANGO_BASE_FRONTEND_URL', default='http://localhost:3000')
 
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost', '.herokuapp.com'])
+ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOST"), os.environ.get("WEB_HOST")]
+
+# ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost', '.herokuapp.com'])
 
 # Application definition
 
@@ -147,7 +148,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
 
-PRODUCTION_SETTINGS = env.bool('DJANGO_PRODUCTION_SETTINGS', default=False)
+# PRODUCTION_SETTINGS = os.environ.get('DJANGO_PRODUCTION_SETTINGS', default=False)
 
 # JWT settings
 JWT_EXPIRATION_DELTA_DEFAULT = 2.628e+6  # 1 month in seconds
