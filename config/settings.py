@@ -34,8 +34,8 @@ SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=True)
 
-BASE_BACKEND_URL = env.str('DJANGO_BASE_BACKEND_URL', default='http://localhost:8000')
-BASE_FRONTEND_URL = env.str('DJANGO_BASE_FRONTEND_URL', default='http://localhost:3000')
+BASE_BACKEND_URL = os.environ.get('DJANGO_BASE_BACKEND_URL', default='http://localhost:8000')
+BASE_FRONTEND_URL = os.environ.get('DJANGO_BASE_FRONTEND_URL', default='http://localhost:3000')
 
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost', '.herokuapp.com'])
 
@@ -173,13 +173,12 @@ JWT_AUTH = {
 #     default=[BASE_FRONTEND_URL]
 # )
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "http://127.0.0.1:3000",
-#     "https://e-manager-web.herokuapp.com",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://e-manager-web.herokuapp.com",
+]
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 # Google OAuth2 settings
 GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('DJANGO_GOOGLE_OAUTH2_CLIENT_ID')
