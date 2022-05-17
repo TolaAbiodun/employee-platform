@@ -1,4 +1,4 @@
-# Local Development
+# EMPLOYEE APP PLATFORM
 
 0. The project uses sqlite3 for local development so you don't need any DB configuration :v:
 1. Create a new virtual env. We use the latest stable version of Python for this project -> `3.9`
@@ -12,7 +12,7 @@ DJANGO_GOOGLE_OAUTH2_CLIENT_ID=<your-client-id-here>
 DJANGO_GOOGLE_OAUTH2_CLIENT_SECRET=<your-client-secret-here>
 ```
 
-6. We're ready! Run the server -> `python3 manage.py runserver`
+6. Run the server -> `python3 manage.py runserver`
 7. _(Optional)_ If you want to create a new superuser in order to use the Django admin, you can do the following:
 
 - Run `python3 manage.py shell_plus`
