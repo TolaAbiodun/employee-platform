@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import datetime, os
+import datetime
+import os
 import environ
 import django_heroku
 
@@ -180,8 +181,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # Google OAuth2 settings
-GOOGLE_OAUTH2_CLIENT_ID = env.str('DJANGO_GOOGLE_OAUTH2_CLIENT_ID')
-GOOGLE_OAUTH2_CLIENT_SECRET = env.str('DJANGO_GOOGLE_OAUTH2_CLIENT_SECRET')
+GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('DJANGO_GOOGLE_OAUTH2_CLIENT_ID')
+GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get('DJANGO_GOOGLE_OAUTH2_CLIENT_SECRET')
 
 
 # Heroku
