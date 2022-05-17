@@ -151,10 +151,10 @@ AUTH_USER_MODEL = 'users.User'
 # PRODUCTION_SETTINGS = os.environ.get('DJANGO_PRODUCTION_SETTINGS', default=False)
 
 # JWT settings
-JWT_EXPIRATION_DELTA_DEFAULT = 60  # minutes
+JWT_EXPIRATION_DELTA_DEFAULT = 2.628e+6  # 1 month in seconds
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(
-        minutes=os.environ.get(
+        seconds=os.environ.get(
             'DJANGO_JWT_EXPIRATION_DELTA',
             default=JWT_EXPIRATION_DELTA_DEFAULT
         )
