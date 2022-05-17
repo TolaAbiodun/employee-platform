@@ -36,7 +36,7 @@ DEBUG = os.environ.get('DEBUG', default=True)
 BASE_BACKEND_URL = os.environ.get('DJANGO_BASE_BACKEND_URL', default='http://localhost:8000')
 BASE_FRONTEND_URL = os.environ.get('DJANGO_BASE_FRONTEND_URL', default='http://localhost:3000')
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', default=['localhost', 'https://employee-platform.herokuapp.com'])
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', default=['localhost', 'employee-platform.herokuapp.com'])
 
 # Application definition
 
