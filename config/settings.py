@@ -173,12 +173,13 @@ JWT_AUTH = {
 #     default=[BASE_FRONTEND_URL]
 # )
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://e-manager-web.herokuapp.com",
-    "https://employee-platform.herokuapp.com/api/v1/users/me"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+#     "https://e-manager-web.herokuapp.com",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Google OAuth2 settings
 GOOGLE_OAUTH2_CLIENT_ID = os.environ.get('DJANGO_GOOGLE_OAUTH2_CLIENT_ID')
