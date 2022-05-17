@@ -166,12 +166,17 @@ JWT_AUTH = {
 
 
 # CORS settings
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = env.list(
-    'DJANGO_CORS_ORIGIN_WHITELIST',
-    default=[BASE_FRONTEND_URL]
-)
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_WHITELIST = env.list(
+#     'DJANGO_CORS_ORIGIN_WHITELIST',
+#     default=[BASE_FRONTEND_URL]
+# )
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://e-manager-web.herokuapp.com/",
+]
 
 # Google OAuth2 settings
 GOOGLE_OAUTH2_CLIENT_ID = env.str('DJANGO_GOOGLE_OAUTH2_CLIENT_ID')
