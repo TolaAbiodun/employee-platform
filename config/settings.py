@@ -14,6 +14,10 @@ import datetime, os
 import environ
 import django_heroku
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
