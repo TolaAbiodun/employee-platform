@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import datetime
-import os
+import datetime, os
+import environ
 import django_heroku
 
 from pathlib import Path
@@ -36,9 +36,7 @@ DEBUG = os.environ.get('DEBUG', default=True)
 BASE_BACKEND_URL = os.environ.get('DJANGO_BASE_BACKEND_URL', default='http://localhost:8000')
 BASE_FRONTEND_URL = os.environ.get('DJANGO_BASE_FRONTEND_URL', default='http://localhost:3000')
 
-ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOST"), os.environ.get("WEB_HOST")]
-
-# ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['localhost', '.herokuapp.com'])
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', default=['localhost', 'employee-platform.herokuapp.com'])
 
 # Application definition
 
@@ -148,7 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
 
-# PRODUCTION_SETTINGS = os.environ.get('DJANGO_PRODUCTION_SETTINGS', default=False)
+PRODUCTION_SETTINGS = os.environ.get('DJANGO_PRODUCTION_SETTINGS', default=False)
 
 # JWT settings
 JWT_EXPIRATION_DELTA_DEFAULT = 2.628e+6  # 1 month in seconds
@@ -168,17 +166,11 @@ JWT_AUTH = {
 
 
 # CORS settings
-# CORS_ALLOW_CREDENTIALS = True
-# CORS_ORIGIN_WHITELIST = env.list(
-#     'DJANGO_CORS_ORIGIN_WHITELIST',
-#     default=[BASE_FRONTEND_URL]
-# )
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://e-manager-web.herokuapp.com",
-]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = os.environ.get(
+    'DJANGO_CORS_ORIGIN_WHITELIST',
+    default=[BASE_FRONTEND_URL]
+)
 
 
 # Google OAuth2 settings
